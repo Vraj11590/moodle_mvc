@@ -4,6 +4,8 @@
 
     class Database{
         
+        public $test = "heelo";
+        
         private $connection = null; //this variable can be passed to anything that needs a database connection
         
         public function __construct()

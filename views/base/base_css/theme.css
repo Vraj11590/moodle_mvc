@@ -1,5 +1,19 @@
-body,p,a,u,b,i{
-    font-family:arial;
-    font-size:14px;
-    line-height:3;
+/* The Reset ---------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,
+h6,pre,form,fieldset,input,p,blockquote,table,
+th,td {/* margin: 0;*/ padding: 0; }
+fieldset,img,abbr { border: 0; }
+address,caption,cite,code,dfn,h1,h2,h3,
+h4,h5,h6,th,var { font-style: normal; font-weight: normal; }
+caption,th { text-align: left; }
+q:before,q:after { content: ''; }
+a { text-decoration: none; }
+body {
+	font-size: 62.5%;
+	background: #fff;
+	font-family: sans-serif;
+	line-height: 22px;
+	color: #444;
+	margin-bottom: 40px;
 }
+/* -------------------------------------------- */

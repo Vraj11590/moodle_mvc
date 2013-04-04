@@ -1,0 +1,22 @@
+/*basic page structure*/
+#main{margin:0;}
+
+
+#header{width:960px; height:100px; border: 2px dotted black; margin:0 auto;}
+    #semesterpanel{width:100px; height: 100px; border-right:4px solid red; float:left; }
+        #semesterpanel table{}
+    #courses{}
+    #userpanel{width:200px; height: 100px; float:right; border-left: 4px solid red; text-align: center;}
+        #user_top{width:200px; height:20px; border-bottom:1px dotted black;}
+            #user_top a{float:right; margin-right: 5px;}
+            #user_top label{float:left; margin-left:2px;}
+        #user_middle{height:70px; float:none !important; margin: 0;line-height: 15px;}
+            #user_middle ul{}
+                #user_middle li{list-style: none;}
+                #user_middle a{}
+
+
+
+#main{}
+    #leftpanel{}
+    #contentpanel{}

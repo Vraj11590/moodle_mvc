@@ -35,8 +35,17 @@
              <br>
              <br>
              <input type="submit" value="Login" name="loginsubmit" style="padding:5px;"/>
+        <?php
+            if ($login->errors) {
+                foreach ($login->errors as $error) {
+                    echo '<div class="message_error">'.$error.'</div>';                
+                }
+            }
+            
+        ?> 
          
-        </form>             
+        </form>
+
     </center>
 
     </div>

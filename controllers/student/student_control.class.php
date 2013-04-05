@@ -20,7 +20,7 @@ class studentControl{
         echo($this->ucid);
         $studentModel->setUCID($this->ucid);
         
-       // $data =  $studentModel->getStudentData();
+        $data =  $studentModel->getStudentData();
     }
 
   

@@ -1,10 +1,8 @@
  <?php include('views/base/header.php'); ?>
 
 <?php
-$studentModel = new studentModel();
+$studentModel = new studentModel($db);
 $student = new studentControl($studentModel);
-echo($student->getData());
-
 ?>
  
 <link rel="stylesheet" type="text/css" href="views/post_login/css/structure.css">

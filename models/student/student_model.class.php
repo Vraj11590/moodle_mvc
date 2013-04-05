@@ -6,14 +6,47 @@
 
 
 class studentModel{
-    
-    public function __construct()
+       
+    private $ucid = "";
+    private $connection = "";
+    public $studentData;
+    public function __construct(Database $db)
     {
-        //echo ("Hello30");
+       
+       $this->connection = $db->getDatabaseConnection();
+       if($this->connection)
+       {
+              $q = $this->connection->query("SELECT * FROM enrolled WHERE ucid ='".$this->ucid."';");
+              $result = $q->fetch_object();
+              
+              $semester = $result->semester;
+              $cname = $result->cname;
+              $section = $result->section;
+              $grade = $result->grade;
+              $active = $result->active;
+              
+              $data = array($semester,$section,$cname,$grade,$active);
+              
+              $studentData = json_encode($data);
+              $this->setStudentData($studentData);
+       
+       }
+       
+       
+
     }
-    public function test()
+    public function setStudentData($data)
     {
-        echo "this is a test";
+       $this->studentData = $data;
+    }
+    
+    public function getStudentData($studentData)
+    {
+        return $studentData;
+    }
+    public function setUCID($u)
+    {
+       $this->ucid=$u;
     }
 }
 

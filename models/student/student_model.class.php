@@ -21,7 +21,7 @@ class studentModel{
               $result = mysqli_query($this->connection,"SELECT * FROM enrolled WHERE ucid='".$this->ucid."'");
               $result_row = $result->fetch_object();
               $num_rows = mysqli_num_rows($result);
-              $d = json_encode($resut_row);
+              $d = json_encode($result_row);
               $this->setStudentData($d);
        
        }else{

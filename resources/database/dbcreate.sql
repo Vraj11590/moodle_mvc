@@ -63,6 +63,16 @@ CREATE TABLE IF NOT EXISTS `enrolled` (
   KEY `ucid` (`ucid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `enrolled` (`crn`, `ucid`) VALUES
+('0','gt35'),
+('1','gt35'),
+('2','gt35'),
+('0','vp78'),
+('1','vp78'),
+('2','vp78');
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +106,11 @@ CREATE TABLE IF NOT EXISTS `sections` (
   UNIQUE KEY `crn` (`crn`),
   KEY `teachucid` (`teachucid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `sections` (`courseid`, `semesterid`) VALUES
+('CS332','20131'),
+('Math211','20131'),
+('Phys111','20131');
 
 -- --------------------------------------------------------
 

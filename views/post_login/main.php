@@ -1,7 +1,7 @@
  <?php include('views/base/header.php'); ?>
 
 <?php
-$studentModel = new studentModel($db);
+$studentModel = new studentModel($db,$_SESSION['UCID']);
 $student = new studentControl($studentModel);
 ?>
  
@@ -32,7 +32,7 @@ $student = new studentControl($studentModel);
                     <form action="" name="semester" id="semester_select">
                          <label>Select Semester:</label><br>
                          <select>
-                              <option value=""> <?php echo($student->ucid); ?> </option>
+                              <option value=""> <?php ?> </option>
                          </select>
                     </form>
                </table>

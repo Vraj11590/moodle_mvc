@@ -19,11 +19,19 @@ class studentModel{
        {
               $this->ucid=$session_ucid;
               $result = mysqli_query($this->connection,"SELECT * FROM enrolled WHERE ucid='".$this->ucid."'");
-              $result_row = $result->fetch_object();
-              $num_rows = mysqli_num_rows($result);
-              $d = json_encode($result_row);
-              $this->setStudentData($d);
-       
+                      
+              while($row = mysqli_fetch_array($result))
+              {
+                echo $row['crn'];
+              }
+              
+              
+              
+              //$num_rows = mysqli_num_rows($result);
+              //$d = json_encode($result_row);
+              //echo ("hello");
+              //$this->setStudentData($d);
+              //
        }else{
         echo("connection error");
        }

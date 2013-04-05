@@ -18,30 +18,11 @@ class studentModel{
        if($this->connection)
        {
               $this->ucid=$session_ucid;
-              $row = $this->connection->query("SELECT * FROM enrolled WHERE ucid='".$session_ucid."';");
-              $num = mysql_num_rows($row);
-              echo($num);
-              //if($row->num_rows > 1)
-              //{
-              //  $result = $row->fetch_object();
-              // 
-              //  echo($num);   
-              //}
-              //else{
-              //  echo("some error");
-              //}
-              //
-              
-              //$semester = $result->semester;
-              //$cname = $result->cname;
-              //$section = $result->section;
-              //$grade = $result->grade;
-              //$active = $result->active;
-              //
-              //$data = array($semester,$section,$cname,$grade,$active);
-              //
-              //$d = json_encode($data);
-              //$this->setStudentData($d);
+              $result = mysqli_query($this->connection,"SELECT * FROM enrolled WHERE ucid='".$this->ucid."'");
+              $result_row = $result->fetch_object();
+              $num_rows = mysqli_num_rows($result);
+              $d = json_encode($resut_row);
+              $this->setStudentData($d);
        
        }else{
         echo("connection error");

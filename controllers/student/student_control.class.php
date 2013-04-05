@@ -21,6 +21,9 @@ class studentControl{
         $studentModel->setUCID($this->ucid);
         
         $data =  $studentModel->getStudentData();
+        $d = json_decode($data);
+        echo $d->{'ucid'};
+        echo $d->{'crn'};
     }
 
   

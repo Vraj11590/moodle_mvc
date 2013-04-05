@@ -16,11 +16,11 @@ class studentControl{
     {
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
+        echo("incontrol");
+        echo($this->ucid);
         $studentModel->setUCID($this->ucid);
         
-        $data =  $studentModel->getStudentObject();
-
-
+       // $data =  $studentModel->getStudentData();
     }
 
   

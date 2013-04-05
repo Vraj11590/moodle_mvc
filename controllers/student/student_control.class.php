@@ -14,15 +14,15 @@ class studentControl{
     public $data = "";
     public function __construct(studentModel $studentModel)
     {
-         $data =  $studentModel->test();
-
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
+        $studentModel->setUCID($this->ucid);
+        
+        $data =  $studentModel->getStudentObject();
+
+
     }
-    public function getData()
-    {
-      echo ($this->data);
-    }
+
   
 }
 

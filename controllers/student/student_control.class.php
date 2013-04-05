@@ -2,7 +2,6 @@
 
 //class student
 //handles student semester,courses
-include('../../models/student/student_model.class.php');
 
 class studentControl{
     
@@ -12,30 +11,19 @@ class studentControl{
     
     public $errors = array();
     public $messages = array();
-    
-    
-    public function __construct()
+    public $data = "";
+    public function __construct(studentModel $studentModel)
     {
- 
+         $data =  $studentModel->test();
+
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
-        if($this->connection)
-        {
-            $studentData = new studentModel($this->ucid,$this->type);
-            
-        }
-        
-        
-        
     }
-    
-    
-    
+    public function getData()
+    {
+      echo ($this->data);
+    }
+  
 }
-
-
-
-
-
 
 ?>

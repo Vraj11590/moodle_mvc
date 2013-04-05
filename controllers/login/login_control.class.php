@@ -80,7 +80,7 @@ class Login
     {
         //echo("in postdata()");
         $this->ucid = $this->connection->real_escape_string($_POST['UCID']);
-        $checklogin = $this->connection->query("SELECT id,ucid,password,name,type FROM users WHERE ucid = '".$this->ucid."';");
+        $checklogin = $this->connection->query("SELECT ucid,password,name,type FROM users WHERE ucid = '".$this->ucid."';");
         if($checklogin->num_rows == 1)
         {
             $result_row = $checklogin->fetch_object();

@@ -9,27 +9,42 @@ class studentModel{
        
     private $ucid = "";
     private $connection = "";
-    public $studentData;
-    public function __construct(Database $db)
+    public $studentData = "";
+    public function __construct(Database $db,$session_ucid)
     {
+
        
        $this->connection = $db->getDatabaseConnection();
        if($this->connection)
        {
-              $q = $this->connection->query("SELECT * FROM enrolled WHERE ucid ='".$this->ucid."';");
-              $result = $q->fetch_object();
+              $this->ucid=$session_ucid;
+              $row = $this->connection->query("SELECT * FROM enrolled WHERE ucid='".$session_ucid."';");
+              $num = mysql_num_rows($row);
+              echo($num);
+              //if($row->num_rows > 1)
+              //{
+              //  $result = $row->fetch_object();
+              // 
+              //  echo($num);   
+              //}
+              //else{
+              //  echo("some error");
+              //}
+              //
               
-              $semester = $result->semester;
-              $cname = $result->cname;
-              $section = $result->section;
-              $grade = $result->grade;
-              $active = $result->active;
-              
-              $data = array($semester,$section,$cname,$grade,$active);
-              
-              $studentData = json_encode($data);
-              $this->setStudentData($studentData);
+              //$semester = $result->semester;
+              //$cname = $result->cname;
+              //$section = $result->section;
+              //$grade = $result->grade;
+              //$active = $result->active;
+              //
+              //$data = array($semester,$section,$cname,$grade,$active);
+              //
+              //$d = json_encode($data);
+              //$this->setStudentData($d);
        
+       }else{
+        echo("connection error");
        }
        
        
@@ -40,9 +55,10 @@ class studentModel{
        $this->studentData = $data;
     }
     
-    public function getStudentData($studentData)
+    public function getStudentData()
     {
-        return $studentData;
+        try{return $this->studentData;}
+        catch(Exception $e){echo ($e->getMessage());}
     }
     public function setUCID($u)
     {

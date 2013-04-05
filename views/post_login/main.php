@@ -1,8 +1,9 @@
  <?php include('views/base/header.php'); ?>
 
 <?php
-
-$student = new studentControl();
+$studentModel = new studentModel();
+$student = new studentControl($studentModel);
+echo($student->getData());
 
 ?>
  

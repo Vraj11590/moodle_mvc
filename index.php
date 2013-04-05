@@ -4,6 +4,9 @@
    include('models/base/dbconnection.class.php');
    include('controllers/login/login_control.class.php');
    include('controllers/student/student_control.class.php');
+   include('models/student/student_model.class.php');
+   
+   
     $db = new Database();
     $login = new Login($db);
     if($login->isUserLoggedIn())

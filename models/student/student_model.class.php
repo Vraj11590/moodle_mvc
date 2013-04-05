@@ -2,30 +2,19 @@
 
 //back end student php file
 //gets semesters and returns as a xml object for every semester for that student previous and current
-include('../base/dbconnection.class.php');
+//include('../base/dbconnection.class.php');
 
-$db = new Database();
 
 class studentModel{
     
-       private $connection = null;
-       
-       public function __construct($ucid,$type)
-       {
-            $this->connection = $db->getDatabaseConnection();
-            if($this->connection)
-            {
-                
-            }
-
-            
-       }
-    
-    
-    
-    
-    
-    
+    public function __construct()
+    {
+        //echo ("Hello30");
+    }
+    public function test()
+    {
+        echo "this is a test";
+    }
 }
 
 

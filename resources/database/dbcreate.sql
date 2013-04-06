@@ -1,54 +1,74 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 05, 2013 at 07:21 PM
--- Server version: 5.5.24-log
--- PHP Version: 5.3.13
+-- Host: sql.njit.edu
+-- Generation Time: Apr 06, 2013 at 05:15 PM
+-- Server version: 5.0.91
+-- PHP Version: 5.4.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `localhost`
+-- Database: `thh4`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course`
+-- Table structure for table `courses`
 --
 
-CREATE TABLE IF NOT EXISTS `course` (
-  `courseid` varchar(8) NOT NULL COMMENT 'EX:CS332',
-  `coursename` varchar(40) NOT NULL COMMENT 'EX:Computer Org&Archi',
-  PRIMARY KEY (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `courses` (
+  `courseid` varchar(8) NOT NULL,
+  `coursename` varchar(40) NOT NULL,
+  PRIMARY KEY  (`courseid`),
+  UNIQUE KEY `courseid` (`courseid`),
+  UNIQUE KEY `coursename` (`coursename`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `course`
+-- Dumping data for table `courses`
 --
 
-INSERT INTO `course` (`courseid`, `coursename`) VALUES
-('Acct117', 'Intro. to Accounting'),
-('CS332', 'Computer Organization And Architecture'),
-('CS490', 'Software Engineering'),
-('Eng352', 'Technical Writing'),
-('EPS202', 'Environmental Blah Blah'),
-('Hum212', 'Pre-Modern History'),
-('IS332', 'Mobile App. Development'),
-('IT332', 'Digital Crime'),
-('Math211', 'Calculus III'),
-('Math335', 'Vector Analysis'),
-('PE111', 'Individualized Fitness'),
-('Phys111', 'Physics II');
+INSERT INTO `courses` (`courseid`, `coursename`) VALUES
+('CS100', 'ROADMAP TO COMPUTING'),
+('CS101', 'COMP PRO & PROB SOLVING'),
+('CS103', 'COMPUT SCI BUSINESS PROB'),
+('CS104', 'COMPUT PROG & GRAPH PROB'),
+('CS106', 'ROADMAP TO COMPUTING ENGINEERS'),
+('CS107', 'COMPUTING AS A CAREER'),
+('CS113', 'INTRO COMPUTER SCI I'),
+('CS114', 'INTRO COMPUTER SCI II'),
+('CS115', 'INTRO COM SCI I C++'),
+('CS116', 'INTRO COM SCI II C++'),
+('CS241', 'FOUNDATION OF COMPUTER SCIENCE I'),
+('CS252', 'COMPUTER ORG & ARCHITECT'),
+('CS266', 'GAME MOD DEVELOPMENT'),
+('CS280', 'PROGRAMING LANG CONCEPT'),
+('CS288', 'INTENSIVE PROGRAMING IN LINUX'),
+('CS310', 'WORK EXPERIENCE'),
+('CS332', 'PRINCIPLES OF OPER SYS'),
+('CS341', 'FOUND OF COMP SCIENCE II'),
+('CS345', 'WEB SEARCH'),
+('CS490', 'DESIGN IN SOTFWARE ENGINEERING'),
+('MATH326', 'MATH THEORY FOR ENGINEER'),
+('MATH211', 'CALCULUS III A'),
+('MATH111', 'CALCULUS I'),
+('MATH112', 'CALCULUS II'),
+('MATH213', 'CALCULUS III B'),
+('MATH139', 'GENERAL CALCULUS '),
+('MATH222', 'DIFERENTIAL EQUATIONS'),
+('MATH132', 'CALCULUS B'),
+('ENG333', 'CYBER TEXT'),
+('ENG340', 'ORAL PRESENTATION'),
+('ENG352', 'TECHNICAL WRITING'),
+('PHYS121', 'PHYSICS II'),
+('PHYS111', 'PHYSICS I'),
+('PHYS203', 'EARTH IN SPACE'),
+('PHYS234', 'PHYSICS III'),
+('HUM101', 'WRITING - SPEAKING - THINKING I'),
+('HUM102', 'WRITING - SPEAKING - THINKING II');
 
 -- --------------------------------------------------------
 
@@ -57,21 +77,42 @@ INSERT INTO `course` (`courseid`, `coursename`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `enrolled` (
-  `crn` int(15) DEFAULT NULL,
-  `ucid` varchar(6) DEFAULT NULL,
-  KEY `crn` (`crn`),
-  KEY `ucid` (`ucid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `crn` int(3) NOT NULL,
+  `ucid` varchar(6) NOT NULL,
+  `grade` int(3) default NULL,
+  KEY `enrolledFK` (`crn`),
+  KEY `ENROLLMENT_FK` (`ucid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `enrolled` (`crn`, `ucid`) VALUES
-('1','gt35'),
-('2','gt35'),
-('3','gt35'),
-('1','vp78'),
-('2','vp78'),
-('3','vp78');
+--
+-- Dumping data for table `enrolled`
+--
 
-
+INSERT INTO `enrolled` (`crn`, `ucid`, `grade`) VALUES
+(2, 'thh4', 98),
+(3, 'thh4', 90),
+(5, 'thh4', 100),
+(9, 'thh4', 98),
+(22, 'thh4', 98),
+(27, 'thh4', 87),
+(30, 'thh4', 98),
+(25, 'thh4', 98),
+(2, 'gt35', 98),
+(3, 'gt35', 90),
+(5, 'gt35', 100),
+(9, 'gt35', 98),
+(22, 'gt35', 98),
+(27, 'gt35', 87),
+(30, 'gt35', 98),
+(25, 'gt35', 98),
+(2, 'vp78', 98),
+(3, 'vp78', 90),
+(5, 'vp78', 100),
+(9, 'vp78', 98),
+(22, 'vp78', 98),
+(27, 'vp78', 87),
+(30, 'vp78', 98),
+(25, 'vp78', 98);
 
 -- --------------------------------------------------------
 
@@ -80,15 +121,20 @@ INSERT INTO `enrolled` (`crn`, `ucid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
-  `crn` int(15) DEFAULT NULL,
-  `pid` int(10) NOT NULL DEFAULT '0',
-  `posttext` longtext NOT NULL,
-  `submission` int(1) DEFAULT NULL,
-  `posttitle` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`pid`),
-  UNIQUE KEY `pid` (`pid`),
-  KEY `crn` (`crn`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `crn` int(3) NOT NULL,
+  `pid` int(5) NOT NULL auto_increment,
+  `ucid` varchar(6) NOT NULL,
+  `text_post` varchar(500) default NULL,
+  `post_title` varchar(100) NOT NULL,
+  PRIMARY KEY  (`pid`),
+  KEY `postFK_1` (`ucid`),
+  KEY `postFK_2` (`crn`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `posts`
+--
+
 
 -- --------------------------------------------------------
 
@@ -97,20 +143,52 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `sections` (
-  `teachucid` varchar(6) NOT NULL,
-  `courseid` varchar(8) NOT NULL,
-  `sectionid` varchar(8) NOT NULL,
-  `crn` int(15) NOT NULL,
-  `semesterid` int(5) NOT NULL,
-  PRIMARY KEY (`crn`),
+  `teacherid` varchar(6) NOT NULL,
+  `courseid` varchar(7) NOT NULL,
+  `sectionid` char(3) NOT NULL,
+  `crn` int(3) NOT NULL auto_increment,
+  `semesterid` int(5) default NULL,
+  PRIMARY KEY  (`crn`),
   UNIQUE KEY `crn` (`crn`),
-  KEY `teachucid` (`teachucid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `sectionFK_1` (`teacherid`),
+  KEY `sectionFK_2` (`courseid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
-INSERT INTO `sections` (`teachucid`,`courseid`,`crn`,`semesterid`) VALUES
-('abc123','CS332','1','20131'),
-('abc123','Math211','2','20131'),
-('abc123','Phys111','3','20131');
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`teacherid`, `courseid`, `sectionid`, `crn`, `semesterid`) VALUES
+('theo', 'CS490', '001', 1, 20131),
+('theo', 'CS280', '004', 2, 20131),
+('abc123', 'CS332', '002', 3, 20131),
+('abc123', 'CS288', '003', 4, 20131),
+('theo', 'CS341', '002', 5, 20131),
+('no1', 'MATH326', '002', 6, 20131),
+('no1', 'MATH222', '003', 7, 20131),
+('no1', 'MATH326', '001', 8, 20131),
+('no1', 'MATH112', '004', 9, 20131),
+('no2', 'HUM101', '002', 10, 20131),
+('no2', 'HUM102', '006', 11, 20131),
+('no3', 'PHYS121', '005', 12, 20131),
+('no3', 'PHYS111', '003', 13, 20131),
+('no3', 'PHYS203', '008', 14, 20131),
+('no3', 'PHYS234', '011', 15, 20131),
+('theo', 'CS490', '001', 16, 20124),
+('theo', 'CS280', '004', 17, 20124),
+('abc123', 'CS332', '002', 18, 20124),
+('abc123', 'CS288', '003', 19, 20124),
+('theo', 'CS341', '002', 20, 20124),
+('no1', 'MATH326', '002', 21, 20124),
+('no1', 'MATH222', '003', 22, 20124),
+('no1', 'MATH326', '001', 23, 20124),
+('no1', 'MATH112', '004', 24, 20124),
+('no2', 'HUM101', '002', 25, 20124),
+('no2', 'HUM102', '006', 26, 20124),
+('no3', 'PHYS121', '005', 27, 20124),
+('no3', 'PHYS111', '003', 28, 20124),
+('no3', 'PHYS203', '008', 29, 20124),
+('no3', 'PHYS234', '011', 30, 20124);
 
 -- --------------------------------------------------------
 
@@ -119,46 +197,24 @@ INSERT INTO `sections` (`teachucid`,`courseid`,`crn`,`semesterid`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `ucid` varchar(6) NOT NULL COMMENT 'ucid',
-  `password` text NOT NULL COMMENT 'user pass',
-  `name` text NOT NULL COMMENT 'user full name',
-  `type` text NOT NULL,
-  PRIMARY KEY (`ucid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ucid` varchar(6) NOT NULL,
+  `password` varchar(25) NOT NULL,
+  `type` char(1) default NULL,
+  `name` tinytext,
+  PRIMARY KEY  (`ucid`),
+  UNIQUE KEY `ucid` (`ucid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ucid`, `password`, `name`, `type`) VALUES
-('abc123', 'teacher', 'John Smith', 'Teacher'),
-('gt35', 'password', 'Giaspur Tabanagay', 'Student'),
-('thh4', 'password', 'Hyunh Lastname', 'Student'),
-('vp78', 'password', 'Vrajesh Patel', 'Student');
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `enrolled`
---
-ALTER TABLE `enrolled`
-  ADD CONSTRAINT `enrolled_ibfk_1` FOREIGN KEY (`crn`) REFERENCES `sections` (`crn`),
-  ADD CONSTRAINT `enrolled_ibfk_2` FOREIGN KEY (`ucid`) REFERENCES `users` (`ucid`);
-
---
--- Constraints for table `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`crn`) REFERENCES `sections` (`crn`);
-
---
--- Constraints for table `sections`
---
-ALTER TABLE `sections`
-  ADD CONSTRAINT `sections_ibfk_1` FOREIGN KEY (`teachucid`) REFERENCES `users` (`ucid`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `users` (`ucid`, `password`, `type`, `name`) VALUES
+('thh4', 'password', 's', 'Vuong Huynh'),
+('gt35', 'password', 's', 'Giaspur Tabangay'),
+('vp78', 'password', 's', 'Vrajesh Patel'),
+('theo', 'password', 't', 'Theo Nicholson'),
+('abc123', 'password', 't', 'John Smith'),
+('no1', 'password', 't', 'Rihana Ganga'),
+('no2', 'password', 't', 'Zainab Rachel'),
+('no3', 'password', 't', 'Brown Will');

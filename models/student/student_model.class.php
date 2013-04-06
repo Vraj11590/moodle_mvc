@@ -13,6 +13,7 @@ class studentModel{
     public $crnArr = array();
     public $courseArr = array();
     public $courseNames = array();
+    
     public function __construct(Database $db,$session_ucid)
     {
 
@@ -47,10 +48,11 @@ class studentModel{
             $result = mysqli_query($this->connection,$q_cname);
             while($row = mysqli_fetch_array($result))
               {
+                global $courseNames;
                 $courseNames[] = $row['coursename'];
               }
-              echo(json_encode($this->courseNames));
-            }
+              
+            }echo json_encode($courseNames);
               
        }else{
         echo("connection error");

@@ -15,3 +15,6 @@ AND s.crn = e.crn
 AND e.ucid =  'thh4'
 
 GROUP BY s.crn
+
+
+--vrajesh

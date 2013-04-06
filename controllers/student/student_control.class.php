@@ -17,7 +17,7 @@ class studentControl{
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
         
-        $data = json_encode($studentModel->getCourses());
+        //echo($studentModel->getCourses());
         
         
         

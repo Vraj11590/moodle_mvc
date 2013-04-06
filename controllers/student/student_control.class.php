@@ -16,16 +16,14 @@ class studentControl{
     {
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
-        $studentModel->setUCID($this->ucid);
         
-        $data =  $studentModel->getStudentData();
-        $d = json_decode($data);
-                    echo ($r["crn"]);
+        $data = json_encode($studentModel->getCourses());
+        echo $data;
+        
+        
+        
 
-        while($r = mysqli_fetch_assoc($d))
-        {
-            echo ($r["crn"]);
-        }
+
         
     }
 

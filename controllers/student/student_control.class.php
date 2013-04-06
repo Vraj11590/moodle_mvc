@@ -17,7 +17,7 @@ class studentControl{
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
         
-        //echo($studentModel->getCourses());
+        echo($studentModel->getCourses());
         
         
         

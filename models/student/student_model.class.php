@@ -14,6 +14,7 @@ class studentModel{
     public $courseArr = array();
     public $courseNames = array();
     
+    
     public function __construct(Database $db,$session_ucid)
     {
        //set globals
@@ -29,6 +30,7 @@ class studentModel{
     }
     public function getCourses()
     {
+        $count= 0;
        if($this->connection)
        {
               $result = mysqli_query($this->connection,"SELECT * FROM enrolled WHERE ucid='".$this->ucid."'");
@@ -47,20 +49,32 @@ class studentModel{
               foreach($courseArr as $value){
             $q_cname = "SELECT coursename FROM course WHERE courseid = '".$value."'";
             $result = mysqli_query($this->connection,$q_cname);
+            
+            
             while($row = mysqli_fetch_array($result))
+            
               {
+                $count = $count +1 ;
                 global $courseNames;
-                $courseNames[] = $row['coursename'];
+                $courseNames[] = array($count => $row['coursename']);
+                
+                //$courseNames[] = $row['coursename'];
               }
               
-            }return json_encode($courseNames);
+            }
+            //echo $courseNames[];
+            echo json_encode($courseNames);
+            
+            //return json_encode($courseNames);
               
        }else{
         echo("connection error");
        }
     }
     
-    
+    public function getSemester(){
+        
+    }
     
     
     

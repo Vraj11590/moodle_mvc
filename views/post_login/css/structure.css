@@ -1,22 +1,22 @@
 /*basic page structure*/
 #main{margin:0;}
 
+#logo{margin: 0 auto;}
 
-#header{width:960px; height:100px; border: 2px dotted black; margin:0 auto;}
-    #semesterpanel{width:100px; height: 100px; border-right:4px solid red; float:left; }
-        #semesterpanel table{}
-    #courses{}
-    #userpanel{width:200px; height: 100px; float:right; border-left: 4px solid red; text-align: center;}
-        #user_top{width:200px; height:20px; border-bottom:1px dotted black;}
+#header{width:960px; height:100px;border-top: none; background-color:#eee; margin:0 auto;}
+    #semestercourse{width:100px; height: 100px; float:left;background-color:#eee9d5;border-bottom: 2px solid #030334;border-right: 2px solid #030334;}
+        #semesterpanel{width:100px; height: 100px; float:left;background-color:#eee9d5;}
+        #coursepanel{width:100px;height:100px;float:left}
+
+    #userpanel{width:200px; height: 100px; float:right; border-left: 2px solid #030334; border-bottom: 2px solid #030334;text-align: center;background-color:#eee9d5;}
+        #user_top{width:200px; height:20px; border-bottom:1px dotted black; padding-top:2px;}
             #user_top a{float:right; margin-right: 5px;}
             #user_top label{float:left; margin-left:2px;}
         #user_middle{height:70px; float:none !important; margin: 0;line-height: 15px;}
             #user_middle ul{}
                 #user_middle li{list-style: none;}
                 #user_middle a{}
-
-
-
-#main{}
-    #leftpanel{}
-    #contentpanel{}
+                
+                
+                
+#content{margin:0 auto; width:960px; background-color:#eee; height: 500px;}  

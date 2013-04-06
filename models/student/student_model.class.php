@@ -16,25 +16,26 @@ class studentModel{
     
     public function __construct(Database $db,$session_ucid)
     {
-
+       //set globals
+        $this->connection = $db->getDatabaseConnection();
+        $this->ucid = $session_ucid;
        
-       $this->connection = $db->getDatabaseConnection();
+       
+
+    }
+    public function setStudentData($data)
+    {
+       $this->studentData = $data;
+    }
+    public function getCourses()
+    {
        if($this->connection)
        {
-              $this->ucid=$session_ucid;
               $result = mysqli_query($this->connection,"SELECT * FROM enrolled WHERE ucid='".$this->ucid."'");
               while($row = mysqli_fetch_array($result))
               {
                 $crnArr[] = $row['crn'];
               }
-              
-              //echo json_encode($crnArr);
-              //$num_rows = mysqli_num_rows($result);
-              //$d = json_encode($result_row);
-              //echo ("hello");
-              //$this->setStudentData($d);
-              //
-              
               foreach($crnArr as $value){//makes an array with crn numbers
                 $result = mysqli_query($this->connection,"SELECT courseid FROM sections WHERE crn='".$value."'");
                 while($row = mysqli_fetch_array($result))
@@ -52,35 +53,23 @@ class studentModel{
                 $courseNames[] = $row['coursename'];
               }
               
-            }echo json_encode($courseNames);
+            }return json_encode($courseNames);
               
        }else{
         echo("connection error");
        }
-       
-       
-
     }
-    public function setStudentData($data)
-    {
-       $this->studentData = $data;
-    }
-    public function getCourses()
-    {
-        return $this->courseNames;
-    }
+    
+    
+    
+    
+    
+    
     public function getStudentData()
     {
         try{return $this->studentData;}
         catch(Exception $e){echo ($e->getMessage());}
     }
-    public function setUCID($u)
-    {
-       $this->ucid=$u;
-    }
+    
 }
 
-
-
-
-?>

@@ -1,8 +1,8 @@
-SELECT e.ucid as studentid,
+SELECT e.ucid AS studentid,
        c.courseid AS courseid, c.coursename AS coursename,
-       s.sectionid as sectionid, s.semesterid as semesterid,
-       u.name as teachername
-FROM sections as s, enrolled as e, courses as c, users as u
+       s.sectionid AS sectionid, s.semesterid AS semesterid,
+       u.name AS teachername
+FROM sections AS s, enrolled AS e, courses AS c, users AS u
 WHERE e.crn = s.crn
 AND s.courseid = c.courseid
 AND s.teacherid = u.ucid

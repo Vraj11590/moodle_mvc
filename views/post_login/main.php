@@ -1,3 +1,16 @@
+ <?php include('views/base/header.php'); ?>
+<?php
+ $studentModel = new studentModel($db,$_SESSION['UCID']);
+ $student = new studentControl($studentModel);
+$semester = "Spring 2013";
+?>
+ 
+<script>
+    var test = <?php $semester; ?>;
+   
+</script>
+ <link rel="stylesheet" type="text/css" href="views/post_login/css/structure.css">
+ <body>
 <div id = "main">
     <center><div id="logo"><img src="http://i1321.photobucket.com/albums/u544/vj11590/logo_zps0cbcb553.jpg" width:"960px"></div></center>
     <div id = "header">
@@ -39,3 +52,6 @@
 		<div id = "contentleft"> </div>
 		<div id = "contentmain"> </div>
     </div>
+</div>
+</body>
+ <?php include('views/base/footer.php'); ?>

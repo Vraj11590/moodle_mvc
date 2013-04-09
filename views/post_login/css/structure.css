@@ -1,22 +1,25 @@
 /*basic page structure*/
+body{background-color:#eee;}
 #main{margin:0;}
 
 #logo{margin: 0 auto;}
 
-#header{width:960px; height:100px;border-top: none; background-color:#eee; margin:0 auto;}
-    #semestercourse{width:100px; height: 100px; float:left;background-color:#eee9d5;border-bottom: 2px solid #030334;border-right: 2px solid #030334;}
+#header{width:960px; height:100px;border-top: none;  margin:0 auto; background-color:#eee9d5;}
+    #semestercourse{width:200px; height: 100px; float:left;border-bottom: 1px solid #030334;border-right: 1px solid #030334;}
         #semesterpanel{width:100px; height: 100px; float:left;background-color:#eee9d5;}
         #coursepanel{width:100px;height:100px;float:left}
 
-    #userpanel{width:200px; height: 100px; float:right; border-left: 2px solid #030334; border-bottom: 2px solid #030334;text-align: center;background-color:#eee9d5;}
-        #user_top{width:200px; height:20px; border-bottom:1px dotted black; padding-top:2px;}
+    #userpanel{width:200px; height: 100px; float:right; border-left: 1px solid #030334; border-bottom: 1px solid #030334; border-right: 1px solid #030334;text-align: center;background-color:#eee;}
+        #user_top{width:200px; height:20px; border-bottom:1px dotted black; padding-top:1px;}
             #user_top a{float:right; margin-right: 5px;}
-            #user_top label{float:left; margin-left:2px;}
+            #user_top label{float:left; margin-left:1px;}
         #user_middle{height:70px; float:none !important; margin: 0;line-height: 15px;}
             #user_middle ul{}
                 #user_middle li{list-style: none;}
                 #user_middle a{}
                 
+#spacer{margin: 0 auto; width:960px;height:30px; background-color:#eee9d5;}            
                 
-                
-#content{margin:0 auto; width:960px; background-color:#eee; height: 500px;}  
+#content{margin:0 auto; width:960px;height: 900px; background-color:#eee9d5;clear:both;}  
+    #contentleft{float:left;width:200px; background-color:#eee; height:400px; border: 1px solid #030334;}
+	#contentmain{float:right;border: 1px solid #030334; width:700px; height: 400px; border: 1px solid #030334;}

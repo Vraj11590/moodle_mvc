@@ -1,17 +1,4 @@
- <?php include('views/base/header.php'); ?>
-
-<?php
-$studentModel = new studentModel($db,$_SESSION['UCID']);
-$student = new studentControl($studentModel);
-$semester = "Spring 2013";
-?>
-<script>
-    var test = <?php $semester; ?>;
-    
-</script>
-<link rel="stylesheet" type="text/css" href="views/post_login/css/structure.css">
-
- <div id = "main">
+<div id = "main">
     <center><div id="logo"><img src="http://i1321.photobucket.com/albums/u544/vj11590/logo_zps0cbcb553.jpg" width:"960px"></div></center>
     <div id = "header">
          <div id="semestercourse">
@@ -19,9 +6,9 @@ $semester = "Spring 2013";
                <center>
                <table>
                     <form action="" name="semester" id="semester_select">
-                         <label>Select Semester:</label><br>
+                         <label>Select Semester:fdafdafdafdasfdasfadfdafdasfadafdasfadsfasd</label><br>
                          <select>
-                              <option id="test" value="3"> d </option>
+                              <option id="test" value="3">  </option>
                          </select>
                     </form>
                </table>
@@ -46,13 +33,9 @@ $semester = "Spring 2013";
 
           </div>
      </div>
+  
+	 <div id="spacer"></div>
     <div id = "content">
-        
-<!--        <div id = "leftpanel"></div>
-        <div id = "rightpanel"></div>-->
+		<div id = "contentleft"> </div>
+		<div id = "contentmain"> </div>
     </div>
-
-
- </div>
- 
- <?php include('views/base/footer.php'); ?>

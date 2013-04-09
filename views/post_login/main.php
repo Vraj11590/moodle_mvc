@@ -1,13 +1,12 @@
  <?php include('views/base/header.php'); ?>
 <?php
- $studentModel = new studentModel($db,$_SESSION['UCID']);
+ $studentModel = new studentModel($db);
  $student = new studentControl($studentModel);
-$semester = "Spring 2013";
 ?>
  
 <script>
-    var test = <?php $semester; ?>;
-   
+    var test = JSON.parse('<?php $student->getStudentSemesters() ?>');
+    var e = JSON.decode(test);
 </script>
  <link rel="stylesheet" type="text/css" href="views/post_login/css/structure.css">
  <body>

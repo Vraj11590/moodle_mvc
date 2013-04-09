@@ -11,20 +11,17 @@ class studentControl{
     
     public $errors = array();
     public $messages = array();
-    public $data = "";
+    public $student = "";
+    
     public function __construct(studentModel $studentModel)
     {
         $this->ucid = $_SESSION['UCID'];
         $this->type = $_SESSION['TYPE'];
-        
-        echo($studentModel->getCourses());
-        
-        
-        
-        
-
-
-        
+        $this->student = $studentModel;
+    }
+    public function getStudentSemesters()
+    {
+        $v = $this->student->getSemesterData($this->ucid);
     }
 
   

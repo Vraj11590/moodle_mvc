@@ -48,10 +48,10 @@ class studentModel{
               while($row = mysqli_fetch_array($result))
               {
                 $crn[] = $row['crn'];
-				$courseid[] = $row['courseid'];
-				$coursename[] = $row['coursename'];
-				$sectionid[] = $row['sectionid'];
-				$teachername[] = $row['teacher'];
+		$courseid[] = $row['courseid'];
+		$coursename[] = $row['coursename'];
+		$sectionid[] = $row['sectionid'];
+		$teachername[] = $row['teachername'];
               }
             //echo $courseNames[];
             echo json_encode($coursename);

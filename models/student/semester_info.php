@@ -4,16 +4,16 @@
 
 class studentModel{
        
-    private $ucid = "";
+  private $ucid = "";
   private $semesterid="";
-    private $connection = "";
-    public $studentData = "";
+  private $connection = "";
+  public $studentData = "";
     
-	public $crn = array();
-	public $teachername=array();
-    public $courseid = array();
-    public $courseNames = array();
-	public $sectionid=array();
+  public $crn = array();
+  public $teachername=array();
+  public $courseid = array();
+  public $courseNames = array();
+  public $sectionid=array();
 	
     
     
@@ -36,15 +36,15 @@ class studentModel{
        if($this->connection)
        {
               $result = mysqli_query($this->connection,"SELECT e.ucid as studentid,
-															   c.courseid AS courseid, c.coursename AS coursename,
-															   s.crn as crn, s.sectionid as sectionid,
-															   u.name as teachername
-															   FROM sections as s, enrolled as e, courses as c, users as u
-															   WHERE e.crn = s.crn
-															     AND s.courseid = c.courseid
-															     AND s.teacherid = u.ucid
-                                                                 AND e.ucid='".$this->ucid."' 
-                                                                 AND s.semesterid='".$this->semesterid."'");
+							       c.courseid AS courseid, c.coursename AS coursename,
+							       s.crn as crn, s.sectionid as sectionid,
+							       u.name as teachername
+						        FROM sections as s, enrolled as e, courses as c, users as u
+							WHERE e.crn = s.crn
+							  AND s.courseid = c.courseid
+							  AND s.teacherid = u.ucid
+                                                          AND e.ucid='".$this->ucid."' 
+                                                          AND s.semesterid='".$this->semesterid."'");
               while($row = mysqli_fetch_array($result))
               {
                 $crn[] = $row['crn'];
